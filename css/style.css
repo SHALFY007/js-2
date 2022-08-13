@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'Lato';
+    src: url('../fonts/Lato-Bold.ttf');
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header {
+    width: 100%;
+    max-width: 1920px;
+    min-height: 85px;
+    background-color: #606060;
+    display: flex;
+}
+.container {
+    width: 1440px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: center;
+}
+.cart-button {
+    margin-left: auto;
+    background-color: transparent;
+    width: 150px;
+    height: 50px;
+    border: 2px solid #fff;
+    border-radius: 20px;
+}
+.cart-button-text {
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: #fff;
+}
+.main {
+    width: 100%;
+    max-width: 1920px;
+    background-color: #fff;
+    min-height: 1000px
+}
+.goods-list {
+    padding-top: 25px
+}
+.good-card {
+    min-height: 330px;
+    width: 270px;
+    border-radius: 13px;
+    border: 1px solid black;
+}
