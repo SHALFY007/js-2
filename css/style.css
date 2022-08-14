@@ -35,6 +35,12 @@
     font-size: 17px;
     color: #fff;
 }
+.cart-button:hover {
+    background-color: #fff;
+}
+.cart-button:hover .cart-button-text {
+    color: #606060;
+}
 .main {
     width: 100%;
     max-width: 1920px;
@@ -51,5 +57,34 @@
     min-height: 330px;
     width: 270px;
     border-radius: 13px;
-    border: 1px solid black;
+    border: 1px solid #606060;
+    padding-top: 210px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.good-card:hover {
+    transform: scale(1.05);
+    transition-duration: .5s;
+}
+.good-card-header {
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    color: #606060;
+    margin-bottom: 10px;
+}
+.good-card-price {
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: #606060;
+    margin-bottom: 10px;
+}
+.good-card-button {
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: #FF99CC;
+    text-decoration: none;
 }
