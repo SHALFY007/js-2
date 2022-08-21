@@ -1,0 +1,115 @@
+@font-face {
+    font-family: 'Lato';
+    src: url('../fonts/Lato-Bold.ttf');
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header {
+    width: 100%;
+    max-width: 1920px;
+    min-height: 85px;
+    background-color: #606060;
+    display: flex;
+}
+.container {
+    width: 1440px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    position: relative;
+    justify-content: center;
+}
+.cart-button {
+    margin-left: auto;
+    background-color: transparent;
+    width: 150px;
+    height: 50px;
+    border: 2px solid #fff;
+    border-radius: 20px;
+}
+.cart-button-text {
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: #fff;
+}
+.cart-button:hover {
+    background-color: #fff;
+}
+.cart-button:hover .cart-button-text {
+    color: #606060;
+}
+.cart-block {
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 300px;
+    min-height: 100px;
+    background-color: #fff;
+    z-index: 99;
+    border: 1px solid #606060;
+    border-radius: 16px;
+    top: 85px;
+    right: 0;
+    padding: 5px 5px 5px 5px;
+}
+.open {
+    opacity: 1 !important;
+}
+.cart-block-title {
+    list-style: none;
+    display: flex;
+    justify-content: space-around
+}
+.main {
+    width: 100%;
+    max-width: 1920px;
+    background-color: #fff;
+    min-height: 1000px
+}
+.goods-list {
+    padding-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.good-card {
+    min-height: 330px;
+    width: 270px;
+    border-radius: 13px;
+    border: 1px solid #606060;
+    padding-top: 210px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.good-card:hover {
+    transform: scale(1.05);
+    transition-duration: .5s;
+}
+.good-card-header {
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+    color: #606060;
+    margin-bottom: 10px;
+}
+.good-card-price,
+.cart-block-title-mini {
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: #606060;
+    margin-bottom: 10px;
+}
+.good-card-button {
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: #FF99CC;
+    text-decoration: none;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+       <div class="container">
+           <button class="cart-button" type="button">
+               <span class="cart-button-text">Корзина</span>
+           </button>
+            <div class="cart-block">
+               <ul class="cart-block-title">
+                   <li class="cart-block-title-mini">Название</li>
+                   <li class="cart-block-title-mini">Цена</li>
+                   <li class="cart-block-title-mini">Количество</li>
+               </ul>
+               <div class="cart-list"></div>
+               <hr>
+               <ul class="cart-block-title">
+                   <li class="cart-block-title-mini" id="countOfGoods"></li>
+                   <li class="cart-block-title-mini" id="amountOfGoods"></li>
+                </ul>
+            </div>
+       </div>
+    </header>
+    <main class="main">
+       <div class="container">
+           <div class="goods-list">
+               <div class="good-card">
+                   <h3 class="good-card-header"></h3>
+                   <p class="good-card-price"></p>
+                   <a href="#" class="good-card-button">Purchase</a>
+               </div>
+           </div>
+       </div>
+    </main>
+    <script src="js/main.js"></script>
+</body>
+</html>
