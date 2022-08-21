@@ -19,6 +19,7 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    position: relative;
     justify-content: center;
 }
 .cart-button {
@@ -40,6 +41,29 @@
 }
 .cart-button:hover .cart-button-text {
     color: #606060;
+}
+.cart-block {
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 300px;
+    min-height: 100px;
+    background-color: #fff;
+    z-index: 99;
+    border: 1px solid #606060;
+    border-radius: 16px;
+    top: 85px;
+    right: 0;
+    padding: 5px 5px 5px 5px;
+}
+.open {
+    opacity: 1 !important;
+}
+.cart-block-title {
+    list-style: none;
+    display: flex;
+    justify-content: space-around
 }
 .main {
     width: 100%;
@@ -74,7 +98,8 @@
     color: #606060;
     margin-bottom: 10px;
 }
-.good-card-price {
+.good-card-price,
+.cart-block-title-mini {
     font-family: 'Lato', sans-serif;
     font-weight: 500;
     font-size: 18px;

@@ -1,3 +1,5 @@
+const API_URL = "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses";
+
 class GoodsItem {
     constructor(title, price, id) {
         this.title = title;
@@ -16,16 +18,26 @@ class GoodsItem {
 class GoodsList {
     constructor() {
         this.goods = [];
-        this.fetchGoods();
+        this.fetchGoods().then(data => {
+            this.goods = data;
+            console.log(data);
+            this.render();
+        });
         this.amount = 0;
     }
     fetchGoods() {
-        this.goods = [
+        /*this.goods = [
             { title: 'Shirt', price: 150 },
             { title: 'Socks', price: 50 },
             { title: 'Jacket', price: 350 },
             { title: 'Shoes', price: 250 },
-        ];
+        ];*/
+        
+         return fetch(`${API_URL}/catalogData.json`)
+        .then(result => result.json())
+        .catch(error => {
+             console.log(error)
+         });
     }
     getAmountAll() {
         for (let i=0; i< this.goods.length; i++) {
@@ -37,7 +49,7 @@ class GoodsList {
         let listHtml = '';
         let id = 0;
         this.goods.forEach(good => {
-        const goodItem = new GoodsItem(good.title, good.price, id++);
+        const goodItem = new GoodsItem(good.product_name, good.price, id++);
         listHtml += goodItem.render();
         });
         document.querySelector('.goods-list').innerHTML = listHtml;
@@ -46,45 +58,89 @@ class GoodsList {
 
 const list = new GoodsList();
 list.getAmountAll();
-list.render();
+//list.render();
 
+class Visibility {
+    constructor(selector) {
+        this.selector = selector;
+    }
+    visible() {
+        document.querySelector(`.${this.selector}`).classList.toggle('open');
+    
+}
+}
+
+class ClickVisibleElement {
+    constructor(mainElement, newElement) {
+        this.mainElement = mainElement;
+        this.newElement = newElement;
+        this._render();
+    }
+    _render() {
+        document.querySelector(`.${this.mainElement}`).addEventListener('click', event => {
+            new Visibility(this.newElement).visible();
+        })
+    }
+}
+
+new ClickVisibleElement('cart-button', 'cart-block');
 class CartItem {
-    constructor(title, price) {
+    constructor(title, price, count) {
         this.title = title;
         this.price = price;
-        this.count = 0;
-    }
-    getCount() {
-        /*document.querySelectorAll('.good-card-button').forEach(item => {
-           item.addEventListener('click', e => {
-           idItem = e.target.parentElement.getAttribute("data-id");
-        
-           });  
-        });*/
-        
-        
+        this.count = count;
     }
     render() {
-        
+        return `<ul class="cart-block-title">
+                   <li class="cart-block-title-mini">${this.title}</li>
+                   <li class="cart-block-title-mini">${this.price}</li>
+                   <li class="cart-block-title-mini">${this.count}</li>
+               </ul>`
     }
 }
 
 class CartList {
     constructor() {
         this.goods = [];
-        this.list();
+        this.data = [];
+        this.list().then(data => {
+            this.data = data;
+            this.goods = data.contents;
+            //console.log(this.goods);
+            this.render();
+        })
     }
     list() {
-        this.goods = []
+         return fetch(`${API_URL}/getBasket.json`)
+        .then(result => result.json())
+        .catch(e => console.log(e))
+    }
+    addGood() {
+        
+    }
+    RemoveGood() {
+        
     }
     getAmountAll() {
         
     }
     render() {
+        let html = '';
+        let renderArr = this.goods.forEach(item => {
+            let goodItem = new CartItem(item.product_name, item.price, item.quantity);
+            html += goodItem.render();
+        });
         
+        const cartBlock = document.querySelector('.cart-list');
+        cartBlock.insertAdjacentHTML('beforeend', html);
+        const countOfGoods = document.querySelector('#countOfGoods');
+        const amountOfGoods = document.querySelector('#amountOfGoods');
+        countOfGoods.textContent = `Всего товаров: ${this.data.countGoods}`;
+        amountOfGoods.textContent = `Сумма: ${this.data.amount}`;
     }
 }
-new CartItem('dsf', 12).getCount();
+
+new CartList();
 
 
 
